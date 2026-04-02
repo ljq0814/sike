@@ -1,0 +1,58 @@
+Sliced Inverse Kendall’s tau Estimation (SIKE)
+================
+
+## Examples
+
+### Example 1: Simulated Data
+
+We generate a simple simulation to demonstrate the performance of
+`sike()` under a known structure. Only the first `K` of `p` predictors
+are informative.
+
+``` r
+library(sike)
+
+set.seed(123)
+n <- 600   # sample size
+p <- 30    # number of predictors
+K <- 4     # dimension of central subspace
+# Generate predictors from a Cauchy distribution
+X <- matrix(rcauchy(n*p),n,p)
+
+# Generate response depending only on the first 4 predictors
+beta_true <- diag(1,nrow=p,ncol=K)
+y <- as.vector(X%*%beta_true[,1])**2 + (as.vector(X%*%beta_true[,2])+1.5)**2 + as.vector(X%*%beta_true[,3])**3 + abs(as.vector(X%*%beta_true[,4])) + 0.5 * rnorm(n)
+
+# Estimate the central subspace
+elptsm <- elptstd(X)
+result <- sike(y, X, K = K, type = "standard",Sig = elptsm,slices = 5)
+
+# Evaluate trace correlation
+print(trace_corr(result, beta_true))
+```
+
+### Example 2: Real Data Analysis
+
+We illustrate the usage of `sike()` using the `asset` dataset, which
+contains monthly portfolio returns and 18 classical asset pricing
+factors from July 1976 to December 2017.
+
+``` r
+library(sike)
+
+# Load the asset dataset
+data(asset)
+
+#
+X <- as.matrix(asset[, 2:19]) # 18 classical factors as predictors
+elptsm <- elptstd(X) # calculate the standardized scatter matrix
+sike_R2 <- rep(0,202) # adjusted R^2 of sike
+
+for (i in 1:202){
+  y <- asset[, 19+i]       # use the ith portfolio return as response
+  beta <- sike(y,X,Sig = elptsm, type = "refinement", K = 1,slices = 5) # Estimate the central subspace with K = 1 directions
+  sike_data <- data.frame(y = y, X1 = as.vector(X%*%beta))
+  sike_R2[i] <- summary(lm(y~X1+I(X1^2),sike_data))$adj.r.squared
+}
+print(mean(sike_R2))
+```
