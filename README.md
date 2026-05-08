@@ -1,6 +1,36 @@
 Sliced Inverse Kendall’s tau Estimation (SIKE)
 ================
 
+## Overview
+
+`sike` implements Sliced Inverse Kendall’s tau Estimation (SIKE), a
+sufficient dimension reduction method designed for heavy-tailed
+elliptically distributed data. This method is based on the Kendall’s tau
+matrix and is applicable to heavy-tailed distributions. A refinement
+algorithm is also included to improve estimation in challenging
+settings.
+
+The package provides the following main functions:
+
+- `sike()`: Sliced Inverse Kendall’s tau Estimation (SIKE)
+- `esir()`: Elliptical Sliced Inverse Regression (ESIR)
+- `sir()`: Sliced Inverse Regression (SIR)
+- `slicedave()`: Sliced Average Variance Estimation (SAVE)
+- `wire()`: Weighted Inverse Regression Estimation (WIRE)
+- `sime()`: Spatial Inverse Median Estimation (SIME)
+- `csir()`: Contour Sliced Inverse Regression (CSIR)
+- `hrstd()`: Scatter matrix estimation via HR divergence
+- `elptstd()`: Scatter matrix estimation for elliptical distributions
+
+## Installation
+
+You can install the development version of `sike` from GitHub with:
+
+``` r
+# install.packages("devtools")
+devtools::install_github("ljq0814/sike")
+```
+
 ## Examples
 
 ### Example 1: Simulated Data
