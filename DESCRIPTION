@@ -2,10 +2,10 @@ Package: sike
 Type: Package
 Title: Sliced Inverse Kendall's tau Estimation
 Version: 1.0.0
-Author: c(person("Jiaqi", "Li", role=c("aut")))
+Author: c(person("Jiaqi", "Li", role=c("aut","cre")))
 Maintainer: Jiaqi Li <ljq0814nana@gmail.com>
 Description: R package for Sliced Inverse Kendall's tau Estimation (SIKE) for sufficient dimension reduction with heavy-tailed covariates. See the published paper High-dimensional Sliced Inverse Kendall’s tau Estimation for Heavy-tailed Data. 
-License: GPL (>= 2)
+License: MIT + file LICENSE
 Imports: Rcpp, RcppArmadillo, robustbase, pcaPP, Matrix
 LinkingTo: Rcpp, RcppArmadillo
 Encoding: UTF-8

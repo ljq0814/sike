@@ -2,18 +2,18 @@
 # Generator token: 10BE3573-1514-4C36-9D1C-5A225CD40393
 
 spsign <- function(x) {
-    .Call('_sike_spsign', PACKAGE = 'sike', x)
+    .Call(`_sike_spsign`, x)
 }
 
 spcov <- function(X) {
-    .Call('_sike_spcov', PACKAGE = 'sike', X)
+    .Call(`_sike_spcov`, X)
 }
 
 kendalltau <- function(X) {
-    .Call('_sike_kendalltau', PACKAGE = 'sike', X)
+    .Call(`_sike_kendalltau`, X)
 }
 
 hrstandardization <- function(X, epsilon = 5e-3, maxiter = 1000L) {
-    .Call('_sike_hrstandardization', PACKAGE = 'sike', X, epsilon, maxiter)
+    .Call(`_sike_hrstandardization`, X, epsilon, maxiter)
 }
 
