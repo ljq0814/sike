@@ -7,7 +7,7 @@
 #'
 #' @return A \code{p x p} symmetric idempotent projection matrix.
 #'
-#' @keywords internal
+#' @noRd
 proj_mat <- function(beta){
   return(beta%*%solve(t(beta)%*%beta)%*%t(beta))
 }

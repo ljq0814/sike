@@ -27,7 +27,7 @@ spkendalltau <- function(X,type = "redefined"){
 #'
 #' @return A \code{p x p} matrix equal to \eqn{A^{\text{power}}}.
 #'
-#' @keywords internal
+#' @noRd
 matpower <- function(mat,power){
     eigmat <- eigen(mat)
     return(eigmat$vectors%*%diag((eigmat$values)^power)%*%t(eigmat$vectors))
@@ -46,7 +46,7 @@ matpower <- function(mat,power){
 #'     \item{X}{The predictor matrix with rows reordered accordingly.}
 #'   }
 #'
-#' @keywords internal
+#' @noRd
 sortdata <- function(y,X){
     n <- nrow(X)
     ord <- order(y)
@@ -67,7 +67,7 @@ sortdata <- function(y,X){
 #' @return A numeric vector of length \code{p} giving the updated location
 #'   estimate.
 #'
-#' @keywords internal
+#' @noRd
 updtloc <- function(resi, sqB){
     n = nrow(resi);p = ncol(resi)
     res = matrix(0,p,p)
@@ -91,7 +91,7 @@ updtloc <- function(resi, sqB){
 #' @return A \code{p x p} symmetric positive definite matrix giving the
 #'   updated scatter matrix estimate.
 #'
-#' @keywords internal
+#' @noRd
 updtshape <- function(resi, sqB){
     n = nrow(resi);p = ncol(resi)
     return(sqB%*%spcov(resi)%*%sqB*p)
@@ -364,7 +364,7 @@ slicedave <- function(y,X,K,slices = 10){
 #'
 #' @return A non-negative numeric scalar giving the kernel weight.
 #'
-#' @keywords internal
+#' @noRd
 k_fun <- function(x)
 {
   z <- norm(x,"2")
