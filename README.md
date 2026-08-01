@@ -86,3 +86,10 @@ for (i in 1:202){
 }
 print(mean(sike_R2))
 ```
+
+## Reference
+
+Li, J., He, S., & Chen, X. (2026). High-dimensional Sliced Inverse
+Kendall’s tau Estimation for Heavy-tailed Data. *Journal of Business &
+Economic Statistics*, online published.
+<https://doi.org/10.1080/07350015.2026.2707219>
